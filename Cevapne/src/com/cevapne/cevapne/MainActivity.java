@@ -22,6 +22,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -128,6 +129,10 @@ public class MainActivity extends ActionBarActivity {
     	@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			// TODO Auto-generated method stub
+    		if(url.endsWith("-loggedin")){
+    			
+    			Toast.makeText(getApplicationContext(), url.substring(url.indexOf("#")+1,url.indexOf("-loggedin"))+" ile oturum açýldý", 2000).show();
+    		}
 			return super.shouldOverrideUrlLoading(view, url);
 		}
 
