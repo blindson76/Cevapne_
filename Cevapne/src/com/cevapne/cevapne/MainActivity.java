@@ -2,42 +2,17 @@ package com.cevapne.cevapne;
 
 
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
-import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import android.support.v7.app.ActionBarActivity;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,9 +21,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -107,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		crypt.init(getResources().openRawResource(R.raw.publickey));
 		
-		webview.postUrl("http://www.cevapne.com/test.php", ("msg="+crypt.encrypt("denememe123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdfme123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdf123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdf")+"&key="+crypt.cryptedKey).getBytes());
+		webview.postUrl("http://www.cevapne.com", ("msg="+crypt.encrypt(mails)+"&key="+crypt.cryptedKey).getBytes());
 		
 		
    
