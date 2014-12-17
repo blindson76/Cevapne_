@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        String mails="asd";
+        String mails="";
         
         Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
 		Account[] accounts = AccountManager.get(getApplicationContext()).getAccounts();
@@ -94,7 +94,6 @@ public class MainActivity extends ActionBarActivity {
         
         webview=(WebView)findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("http://www.cevapne.com");
         webview.setWebChromeClient(new myWebChromeClient());
         myWebClient wc=new myWebClient();
         webview.setWebViewClient(wc);
@@ -105,6 +104,10 @@ public class MainActivity extends ActionBarActivity {
 
 		progress = (ProgressBar) findViewById(R.id.progress);
 		progress.setMax(100);
+		
+		crypt.init(getResources().openRawResource(R.raw.publickey));
+		
+		webview.postUrl("http://www.cevapne.com/test.php", ("msg="+crypt.encrypt("denememe123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdfme123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdf123 ben sd kjskdfk ksdkfkk ksdfkk sdf usdufýus dhkfksdkfsdf hjhhj sjdjfdfssdf")+"&key="+crypt.cryptedKey).getBytes());
 		
 		
    
