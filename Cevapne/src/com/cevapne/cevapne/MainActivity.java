@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        String mails="";
+        String mails="asd";
         
         Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
 		Account[] accounts = AccountManager.get(getApplicationContext()).getAccounts();
